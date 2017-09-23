@@ -1,20 +1,72 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <h1>Welcome to {{title}}!</h1>
+  <a href="https://coursetro.com/courses/12/Learn-Angular-4-from-Scratch">https://coursetro.com/courses/12/Learn-Angular-4-from-Scratch</a>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div style="background-color: aquamarine;" *ngIf="showComponentItem">
+  <h1>[2.- Components ]</h1>
+  <app-my-new-component></app-my-new-component>
+</div>
 
+<div style="background-color: antiquewhite;" *ngIf="showTemplatingBasics">
+  <h1>[3.- Templating basics ]</h1>
+  <h1 *ngIf="myList">Here is your list</h1>
+  <div *ngIf="showInternalTemplate; then InternalTmpl1 else InternalTmpl2"></div>
+  <ul>
+    <li *ngFor="let item of myList">{{item}}</li>
+  </ul>
+  <ng-template #InternalTmpl1>
+    <h3>[1] This is an Internal template</h3>
+    <h4>[showInternalTemplate] is {{showInternalTemplate}}</h4>
+  </ng-template>
+  <ng-template #InternalTmpl2>
+    <h3>[2] This is an Internal template</h3>
+    <h4>[showInternalTemplate] is {{showInternalTemplate}}</h4>
+  </ng-template>
+</div>
+<div style="background-color: azure;" *ngIf="showPropertyBinding">
+  <h1>[4.- Property Binding ]</h1>
+  <button [disabled]="buttonStatus">Click me!!!</button><br/>
+  <img src="{{angularLogo}}">
+  <img [src]="angularLogo">
+  <img bind-src="angularLogo">
+</div>
+
+<div style="background-color: blanchedalmond;" *ngIf="showEventBinding">
+  <h1>[5.- Event Binding ]</h1>
+  <button (click)="myEvent($event, '[Click]')">myClientEvent!!!</button>
+  <button (mouseenter)="myEvent($event, '[MouseEnter]')" (mouseout)="myEvent($event, '[MouseOut]')">Mouse Enter+Out Event!!!</button>
+</div>
+
+<div style="background-color: blanchedalmond;" *ngIf="showDefiningStylesheets">
+  <h1>[6.- Defining Stylesheets ]</h1>
+</div>
+
+<div style="background-color: blanchedalmond;" *ngIf="showClassBinding">
+  <h1>[7.- Class Binding ]</h1>
+  <h2 [class]="tittleClass">[set variable name] Hello world!!!</h2>
+  <h2 [class.red-tittle]="showTittleClass">[set condition] Hello world!!!</h2>
+  <h2 [ngClass]="tittleClasses">[set multiple classes at once] Hello world!!!</h2>
+</div>
+
+<div style="background-color: blanchedalmond;" *ngIf="showStyleBinding">
+  <h1>[8.- Style Binding ]</h1>
+  <h2 [style.color]="tittleStyle">[set variable name] Hello world!!!</h2>
+  <h2 [style.color]="showTittleStyle ? 'green':'pink'">[set condition] Hello world!!!</h2>
+  <h2 [ngStyle]="tittleStyles">[set multiple styles] Hello world!!!</h2>
+</div>
+<div style="background-color: blanchedalmond;" *ngIf="showServices">
+  <h1>[9.- Services ]</h1>
+  <h2>{{dataServiceTitle}}</h2>
+  <ul>
+    <li *ngFor="let car of cars">{{car}}</li>
+  </ul>
+</div>
+
+<div style="background-color: blanchedalmond;" *ngIf="showAnimation">
+  <h1>[10.- Animation ]</h1>
+  <p [@myAwesomeAnimation]="state" (click)="animateMeClick()">Animate it!!!</p>
+</div>
+<div style="background-color: blanchedalmond;" *ngIf="showDeploy">
+  <h1>[11.- Deploying your App ]</h1>
+</div>
